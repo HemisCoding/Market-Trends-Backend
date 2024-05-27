@@ -1,0 +1,54 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - development
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_DB: my_database
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Wait for DB
+      run: |
+        until pg_isready --host=localhost --port=5432; do
+          echo "Waiting for database to be ready..."
+          sleep 1
+        done
+
+    - name: Run migrations
+      run: python manage.py migrate
+
+    - name: Run tests
+      run: python manage.py test
