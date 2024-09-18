@@ -29,6 +29,8 @@ ALLOWED_HOSTS = [
     'localhost',  # For local development
     '127.0.0.1',  # For local development
     'market-trends-backend-top.onrender.com',  # Add your Render domain
+    'market-trends.netlify.app',  # Your Netlify frontend domain
+
 ]
 
 
@@ -143,10 +145,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ALLOW_ALL_ORIGINS = True 
 DEBUG = True
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8080'
+    'http://localhost:8080',
+    'https://market-trends.netlify.app',  # Your Netlify frontend URL
+
 ]
 
 CORS_ALLOW_CREDENTIALS = True
