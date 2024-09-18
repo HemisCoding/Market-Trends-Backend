@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-)bld-z)nksi88j-sx=4+sl-lw_adh9_ngy3y)g%^#5^al&2c*=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',  # For local development
+    '127.0.0.1',  # For local development
+    'market-trends-backend-top.onrender.com',  # Add your Render domain
+]
 
 
 # Application definition
