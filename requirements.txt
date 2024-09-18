@@ -1,0 +1,16 @@
+Django==4.2.4                  # Django version you are using
+djangorestframework==3.14.0     # Django REST framework
+psycopg2-binary==2.9.9         # PostgreSQL adapter for Django
+dj-database-url==1.0.0         # Parse database URLs in Django settings
+django-cors-headers==3.14.0     # CORS middleware for Django
+
+# Machine learning libraries
+transformers==4.45.0            # Hugging Face transformers library for NLP
+torch==2.4.1                    # PyTorch for deep learning tasks (version based on your installation)
+
+# Utility libraries
+Pillow==10.0.0                  # Python Imaging Library (PIL fork, useful for image handling)
+gunicorn==20.1.0                # WSGI HTTP server for running Django in production
+
+# If you're deploying to Heroku or Render
+whitenoise==6.5.0               # For serving static files in production
