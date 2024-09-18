@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -83,6 +83,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# DATABASES['default'] = dj_database_url.parse("postgresql://trends_2kxc_user:9Gfqg8wQwphkUUyUxvP1oFmHdYZaEXAG@dpg-crlbg8ij1k6c73fprksg-a.oregon-postgres.render.com/trends_2kxc")
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',  # Database backend
+        'NAME': 'trends_2kxc',                     # Database name
+        'USER': 'trends_2kxc_user',                # Database user
+        'PASSWORD': '9Gfqg8wQwphkUUyUxvP1oFmHdYZaEXAG',          # Password
+        'HOST': 'dpg-crlbg8ij1k6c73fprksg-a.oregon-postgres.render.com',  # Database host
+        'PORT': '5432',                            # Port (default for PostgreSQL)
     }
 }
 
